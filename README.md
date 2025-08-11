@@ -213,15 +213,18 @@ public class App {
 推荐使用OpenMYJ2C保护应用程序的初始化代码，因为它只在运行的时候执行一次，初始化方法不会反复被执行不用担心有性能问题。 
 
 
-#### 授权信息
+#### License Information
 
-1.免费版 只能编译一个类中的一个方法，可以永久免费使用
+1. Free Edition – Can only compile one method from a single class, but can be used indefinitely for free.
 
-2.试用版 免费使用，编译后的jar包可以免费使用一周（7天），之后程序将无法使用
 
-3.个人版 可按月按年付费，控制台会打印OpenMYJ2C的编译信息，控制台信息可定制，不能去除，同时有编译数量限制
+2. Trial Edition – Free to use, and the compiled JAR can be used for one week (7 days). After that, the program will stop functioning.
 
-4.专业版 可按月按年付费，控制台无任何信息输出，没有编译数量限制
+
+3. Personal Edition – Available with monthly or yearly subscription. The console will display OpenMYJ2C compilation information (customizable but cannot be removed). There is also a limit on the number of compilations.
+
+
+4. Professional Edition – Available with monthly or yearly subscription. No console output at all, and no limit on the number of compilations.
 
 #### Frequently Asked Questions
 
