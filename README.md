@@ -223,45 +223,44 @@ public class App {
 
 4.专业版 可按月按年付费，控制台无任何信息输出，没有编译数量限制
 
-#### 常见问题
+#### Frequently Asked Questions
 
-1.  无法编译动态链接库
+1. Unable to compile the dynamic link library
+Answer: This may be caused by Chinese characters or special symbols in the file path, which prevent Zig from compiling. Move the files to a path without Chinese characters or special symbols, then try compiling again.
 
-    答：可能是路径中有中文或特殊字符，导致zig无法编译，修改路径放到非中文或特殊字符的路径下执行编译
 
-2.  需要编译全平台吗
+2. Do I need to compile for all platforms?
+Answer: By default, it compiles for Windows, Linux, and Mac systems, supporting both 64-bit and ARM platforms. You can configure the compilation to target only the platforms you need.
 
-    答：默认配置是编译windows，linux，mac系统支持64位和arm平台，您可以根据自己的需求配置编译的平台
 
-3.  OpenMYJ2C会对我的应用程序的性能产生重大影响吗？
+3. Will OpenMYJ2C significantly affect my application's performance?
+Answer: Many code protection tools involve a trade-off between performance and security. We recommend using it only on sensitive code or code where performance is not critical.
 
-    答：许多代码保护工具必须在性能和安全性之间进行权衡。我们建议您仅在敏感代码或性能不重要的代码上使用它。
 
-4.  OpenMYJ2C是否支持lambdas/streams/exceptions/threads/locks/。。。？
+4. Does OpenMYJ2C support lambdas/streams/exceptions/threads/locks/etc.?
+Answer: OpenMYJ2C works on compiled Java bytecode and supports any bytecode compiled for Java 8 or newer JVMs. It supports all Java language features, as well as other JVM languages such as Kotlin.
 
-    答：OpenMYJ2C对编译的Java字节码进行操作，支持Java 8或更高版本的JVM编译的任何字节码。OpenMYJ2C支持Java中的所有语言特性，并且还支持在JVM上运行的其他编程语言，如                kotlin。
 
-5.  与自己编写JNI方法相比，OpenMYJ2C有哪些优势？
+5. What advantages does OpenMYJ2C have over writing JNI methods manually?
+Answer: Writing Java Native Interface code is challenging and often harder to debug. OpenMYJ2C allows you to write (and test!) your code in Java, using all Java features. In addition:
 
-    答：编写使用Java本机接口的代码非常困难，而且这种代码通常更难调试。OpenMYJ2C允许您编写（和测试！）Java代码，请使用Java中的所有代码。此外：
-        OpenMYJ2C可以翻译Java混淆器的输出，如Zelix、Klassmaster或Stringer。
-        OpenMYJ2C可以在Java API中转换在C中没有直接等价的东西，如lambdas、方法引用和流。
-        使用OpenMYJ2C，您不需要知道如何使用JNI或C，也不需要编写在运行时将本机库链接到应用程序的代码（OpenMYJ2C自动注入）。
-        OpenMYJ2C可以翻译现有的Java代码——您不需要浪费时间重写已经完成的应用程序部分。
+OpenMYJ2C can translate the output of Java obfuscators like Zelix, KlassMaster, or Stringer.
 
-6.  在使用OpenMYJ2C混淆之前，我可以对它们应用额外的混淆处理吗？
+It can convert Java API features that have no direct C equivalent, such as lambdas, method references, and streams.
 
-    答：当然，这是可能的，尽管我们不能保证任何代码混淆工具的兼容性。此外，如果在运行OpenMYJ2C之前已经使用了Java混淆工具，则进一步混淆文件可能是不必要的。
- 
-7.  在运行OpenMYJ2C之后，我可以对输出JAR文件应用额外的混淆处理吗？
+With OpenMYJ2C, you don’t need to know JNI or C, nor write runtime linking code—OpenMYJ2C injects it automatically.
 
-    答：对已用OpenMYJ2C混淆的任何方法/字段/类使用名称混淆将导致运行时由于链接不满足而崩溃。您可以自由使用字符串混淆、引用混淆、资源加密等。
+It can translate existing Java code—you don’t need to waste time rewriting parts of an already completed application.
 
-8.  运行报java.security.InvalidKeyException: Illegal key size异常
- 
-    答：替换jdk/jre/lib/security目录中的local_policy.jar和US_export_policy.jar文件，文件在jce_policy-8.zip中，下载解压即可获取到以上文件
 
-9.  联系方式
 
-    答：请加QQ群：197453088
+6. Can I apply extra obfuscation before using OpenMYJ2C?
+Answer: Yes, this is possible, although we can’t guarantee compatibility with every obfuscation tool. Also, if a Java obfuscator is already used before OpenMYJ2C, further obfuscation might be unnecessary.
 
+
+7. Can I apply extra obfuscation to the JAR output from OpenMYJ2C?
+Answer: Applying name obfuscation to any methods/fields/classes processed by OpenMYJ2C will cause runtime crashes due to unresolved links. However, you are free to use string obfuscation, reference obfuscation, resource encryption, etc.
+
+
+8. Getting java.security.InvalidKeyException: Illegal key size error
+Answer: Replace local_policy.jar and US_export_policy.jar in the jdk/jre/lib/security directory with the ones from jce_policy-8.zip. Download and extract the ZIP to obtain these files.
